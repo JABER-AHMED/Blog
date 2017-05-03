@@ -4,6 +4,11 @@ include 'inc/header.php';
 include 'inc/slider.php';
  ?>
 
+ <?php 
+echo "sabbir asta ekta faul re bhai.";
+
+ ?>
+
 	<div class="contentsection contemplete clear">
 	<div class="maincontent clear">
 	<!-- pagination -->
