@@ -1,0 +1,48 @@
+.headersection, .footersection {background: #237c9f none repeat scroll 0 0;}
+.icon a {background: #237c9f none repeat scroll 0 0;}
+.searchbtn input[type="text"] {background: white none repeat scroll;border: 1px solid #237c9f;}
+.searchbtn input[type="submit"] {background: #57baef none repeat scroll;border: 1px solid #237c9f;}
+.searchbtn input[type="submit"]:hover{background: #237c9f none repeat scroll 0 0;border: 1px solid #FFF;}
+.navsection {
+  background: none repeat scroll 0 0 #42bdff;
+}
+.navsection ul li {
+  border-left: 1px solid #237c9f;
+  border-right: 1px solid #237c9f;
+}
+.samepost h2 a{
+  color: #444;
+}
+.maincontent,.sidebar {
+  background: #f0faff none repeat scroll 0 0;
+}
+.samepost img {
+  border: 1px solid #ebb450;
+}
+.contentsection {
+  border: 1px solid #237c9f;
+}
+.samesidebar h2 {
+  background: #57baef none repeat scroll 0 0;
+  border-bottom: 2px solid #237c9f;
+  color:#333;
+}
+.readmore a {
+  border: 1px solid #42bdff;
+  color: #444;
+}
+.pagination a{
+  background: #42bdff none repeat scroll 0 0;
+  border: 1px solid #237c9f ;
+  color: #333;
+}
+.samepost h2, .about h2 {
+  color: #ac7511;
+}
+.about img {
+  border: 1px solid #b7801c;
+}
+.relatedpost h2 {
+  background: #e6af4b none repeat scroll 0 0;
+  border-bottom: 2px solid #b7801c !important;
+}
