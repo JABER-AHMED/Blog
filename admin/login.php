@@ -36,9 +36,8 @@ $format = new Format();
 		$result = $db->select($query);
 
 		if($result != false){
-			$value = mysqli_fetch_array($result);
-			$row = mysqli_num_rows($result);
-			if ($row > 0) {
+			/*$value = mysqli_fetch_array($result);*/
+			$value = $result->fetch_assoc();
 				
 				session::set("login", true);
 				session::set("username", $value['username']);
@@ -46,10 +45,6 @@ $format = new Format();
 				session::set("userRole", $value['role']);
 				header("Location:index.php");
 			}else{
-
-				echo "<span style = 'color:red; font-size: 18px;'>No Result Found !!.</span>";
-			}
-		}else{
 
 			echo "<span style = 'color:red; font-size: 18px;'>Username or Password not matched !!.</span>";
 		}
@@ -68,6 +63,9 @@ $format = new Format();
 				<input type="submit" value="Log in" name="submit" />
 			</div>
 		</form><!-- form -->
+		<div class="button">
+			<a href="forgetpass.php">Forgot Password !</a>
+		</div><!-- button -->
 		<div class="button">
 			<a href="#">Training with live project</a>
 		</div><!-- button -->

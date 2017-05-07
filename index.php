@@ -3,17 +3,11 @@
 include 'inc/header.php';
 include 'inc/slider.php';
  ?>
-
- <?php 
-echo "sabbir asta ekta faul re bhai.";
-
- ?>
-
-	<div class="contentsection contemplete clear">
+ 	<div class="contentsection contemplete clear">
 	<div class="maincontent clear">
 	<!-- pagination -->
 	<?php 
-
+	
 	$per_page = 3;
 	if(isset($_GET['page'])){
 
@@ -28,7 +22,7 @@ echo "sabbir asta ekta faul re bhai.";
 		<!-- select from database -->
 		<?php 
 
-		 $query = "SELECT * FROM table_post LIMIT $start_from,$per_page";
+		 $query = "SELECT * FROM table_post ORDER BY id DESC LIMIT $start_from,$per_page";
 		 $post = $db->select($query);
 		 if ($post) {
 		 	while($result = $post->fetch_assoc()){

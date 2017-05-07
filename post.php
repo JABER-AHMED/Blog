@@ -1,12 +1,12 @@
 <?php include 'inc/header.php' ?>
 
 <?php 
-
-if (!isset($_GET['id']) || $_GET['id'] == NULL) {
+$postid = mysqli_real_escape_string($db->link, $_GET['id']);
+if (!isset($postid) || $postid == NULL) {
 	header("Location:404.php");
 }else{
 
-	$id = $_GET['id'];
+	$id = $postid;
 }
 
 ?>
@@ -22,7 +22,7 @@ if (!isset($_GET['id']) || $_GET['id'] == NULL) {
 			?>
 				<h2><?php echo $result['title']; ?></h2>
 				<h4><?php echo $format->formatDate($result['date']); ?> By <a href="#"><?php echo $result['author']; ?></a></h4>
-				<img src="admin/<?php echo $result['image']; ?>"alt="post image"/>
+				<img src="admin/<?php echo $result['image']; ?>" alt="post image"/>
 				<?php echo $result['body']; ?>
 				
 				<div class="relatedpost clear">

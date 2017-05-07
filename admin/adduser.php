@@ -16,18 +16,28 @@
                if(isset($_POST['submit'])){
                 $username = $format->validation($_POST['username']);
                 $userpassword = $format->validation(md5($_POST['userpassword']));
+                $email     = $format->validation($_POST['email']);
                 $role     = $format->validation($_POST['role']);
 
                 $username = mysqli_real_escape_string($db->link,$username);
                 $userpassword = mysqli_real_escape_string($db->link,$userpassword);
+                $email     = mysqli_real_escape_string($db->link,$email);
                 $role     = mysqli_real_escape_string($db->link,$role);
 
-                if (empty($username) || empty($userpassword) || empty($role)) {
+                if (empty($username) || empty($userpassword) || empty($role) || empty($email)) {
                    echo "<span class = 'error'>Field must not be empty !!.</span>";
+                }else{
+
+                $mailquery = "SELECT * FROM table_user WHERE email ='$email' LIMIT 1";
+                $mailcheck = $db->select($mailquery);
+
+                if ($mailcheck != false) {
+                    echo "<span class = 'error'>Email Already Exists!!</span>";
                 }
+
                 else{
 
-                    $query = "INSERT INTO table_user(username,userpassword,role) VALUES('$username','$userpassword','$role')";
+                    $query = "INSERT INTO table_user(username,userpassword,email,role) VALUES('$username','$userpassword','$email','$role')";
                     $userinsert = $db->insert($query);
                     if ($userinsert) {
                         echo "<span class = 'success'>User Created successfully !!.</span>";
@@ -36,6 +46,7 @@
                     }
                 }
             }
+        }
 
         ?>
                  <form action="" method="post">
@@ -54,6 +65,14 @@
                         </td>
                             <td>
                                 <input type="password" name="userpassword" placeholder="Enter Password..." class="medium" />
+                            </td>
+                        </tr>
+                        <tr>
+                        <td>
+                            <label>Email</label>
+                        </td>
+                            <td>
+                                <input type="email" name="email" placeholder="Enter valid email..." class="medium" />
                             </td>
                         </tr>
                         <tr>

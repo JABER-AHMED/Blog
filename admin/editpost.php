@@ -24,12 +24,14 @@ if (!isset($_GET['editpostid']) || $_GET['editpostid'] == NULL) {
                 $body = $_POST['body'];
                 $tag = $_POST['tags'];
                 $author = $_POST['author'];
+                $userid = $_POST['userid'];
 
                 $title = mysqli_real_escape_string($db->link,$title);
                 $cat = mysqli_real_escape_string($db->link,$cat);
                 $body = mysqli_real_escape_string($db->link,$body);
                 $tags = mysqli_real_escape_string($db->link,$tag);
                 $author = mysqli_real_escape_string($db->link,$author);
+                $userid = mysqli_real_escape_string($db->link,$userid);
 
                 $permited  = array('jpg', 'jpeg', 'png', 'gif');
                 $file_name = $_FILES['image']['name'];
@@ -64,7 +66,8 @@ if (!isset($_GET['editpostid']) || $_GET['editpostid'] == NULL) {
                     body = '$body',
                     image = '$uploaded_image',
                     author = '$author',
-                    tags = '$tags'
+                    tags = '$tags',
+                    userid = '$userid'
                     WHERE id = '$postid'";
 
                     $updated_rows = $db->update($query);
@@ -83,7 +86,8 @@ if (!isset($_GET['editpostid']) || $_GET['editpostid'] == NULL) {
                     title = '$title',
                     body = '$body',
                     author = '$author',
-                    tags = '$tags'
+                    tags = '$tags',
+                    userid = '$userid'
                     WHERE id = '$postid'";
 
                     $updated_rows = $db->update($query);
@@ -178,6 +182,7 @@ if (!isset($_GET['editpostid']) || $_GET['editpostid'] == NULL) {
                             </td>
                             <td>
                                 <input type="text" name="author" value="<?php echo $postresult['author']; ?>" class="medium" />
+                                <input type="hidden" name="userid" value="<?php echo session::get('userid'); ?>" class="medium" />
                             </td>
                         </tr>
 						<tr>

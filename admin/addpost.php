@@ -13,12 +13,14 @@
                 $body = $_POST['body'];
                 $tag = $_POST['tags'];
                 $author = $_POST['author'];
+                $userid = $_POST['userid'];
 
                 $title = mysqli_real_escape_string($db->link,$title);
                 $cat = mysqli_real_escape_string($db->link,$cat);
                 $body = mysqli_real_escape_string($db->link,$body);
                 $tags = mysqli_real_escape_string($db->link,$tag);
                 $author = mysqli_real_escape_string($db->link,$author);
+                $userid = mysqli_real_escape_string($db->link,$userid);
 
                 $permited  = array('jpg', 'jpeg', 'png', 'gif');
                 $file_name = $_FILES['image']['name'];
@@ -43,7 +45,7 @@
                 } 
                 else{
                     move_uploaded_file($file_temp, $uploaded_image);
-                    $query = "INSERT INTO table_post(cat,title,body,image,author,tags) VALUES('$cat','$title','$body','$uploaded_image','$author','$tags')";
+                    $query = "INSERT INTO table_post(cat,title,body,image,author,tags,userid) VALUES('$cat','$title','$body','$uploaded_image','$author','$tags','$userid')";
                     $inserted_rows = $db->insert($query);
                     if ($inserted_rows) {
                      echo "<span class='success'>Post Inserted Successfully.
@@ -116,6 +118,7 @@
                             </td>
                             <td>
                                 <input type="text" name="author" value="<?php echo session::get('username') ?>" class="medium" />
+                                <input type="hidden" name="userid" value="<?php echo session::get('userid') ?>" class="medium" />
                             </td>
                         </tr>
 						<tr>
